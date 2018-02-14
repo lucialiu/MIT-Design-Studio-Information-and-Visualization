@@ -55,7 +55,7 @@ function drawCanvas2() {
 	// HOUR LINE
 
 	hourThickness = 2;
-	hourPos = secPast/secPerDay * canvasLength;
+	hourPos = secPast/secPerDay * canvasWidth;
 
 	ctx2.fillStyle = "#000000";
 	ctx2.fillRect(hourPos,0,hourThickness,canvasLength);
@@ -83,7 +83,7 @@ function drawCanvas2() {
 	// ctx2.strokeStyle = '#000000';
 	// ctx2.stroke();
 
-	radius2 = 5;
+	radius2 = 6;
 
 	ctx2.beginPath();
 	ctx2.arc(centerX+1, centerY, radius2, 0, 2 * Math.PI, false);
