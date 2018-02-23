@@ -111,8 +111,8 @@ function drawCanvas1() {
     // we can create a function, and then call it for each of the hands
     function drawHand(pos, length, width, color, type) {
 
-        var centerX = Math.sin(pos) * radius * 0.75
-        var centerY = Math.cos(pos) * radius * -0.75
+        var centerX = Math.sin(pos) * radius * 0.75;
+        var centerY = Math.cos(pos) * radius * -0.75;
         //context.clearRect(-canvas.width, -canvas.height, 2*canvas.width, 2*canvas.height);
 
         var circRadius = 10;
