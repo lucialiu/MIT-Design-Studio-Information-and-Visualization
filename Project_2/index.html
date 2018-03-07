@@ -5,26 +5,161 @@
     <title>Weather App - Project 2</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800" rel="stylesheet">
+    
 </head>
 <body>
 <div class="container">
     <div class="row">
-        <h1 class="col-md-12">Mockups</h1>
-        <img src="mockup1.png" class="mockup"/>
-        <img src="mockup2.png" class="mockup"/>
-    <div class="row">
         <h1 class="col-md-12">First Dashboard</h1>
         <div id="mobile1">
+            <div id="weather-icon"></div>
+            <h2 id="location" class="col-md-12">Boston</h2>
+            <div id="variable-container">
+                <img class="variable" src="icons/temperature.svg"/>
+                <img class="variable" src="icons/umbrella.svg"/>
+                <img class="variable" src="icons/humidity.svg"/>
+                <img class="variable" src="icons/wind.svg"/>
+            </div>
         </div>
     </div>
     <br/>
     <div class="row">
         <h1 class="col-md-12">Second Dashboard</h1>
         <div id="mobile2">
+            <table id="grid">
+                <tr>
+                    <td class="grid-item" id="r1c1"></td>
+                    <td class="grid-item" id="r1c2"></td>
+                    <td class="grid-item" id="r1c3"></td>
+                    <td class="grid-item" id="r1c4"></td>
+                    <td class="grid-item" id="r1c5"></td>
+                    <td class="grid-item" id="r1c6"></td>
+                    <td class="grid-item" id="r1c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r2c1"></td>
+                    <td class="grid-item" id="r2c2"></td>
+                    <td class="grid-item" id="r2c3"></td>
+                    <td class="grid-item" id="r2c4"></td>
+                    <td class="grid-item" id="r2c5"></td>
+                    <td class="grid-item" id="r2c6"></td>
+                    <td class="grid-item" id="r2c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r3c1"></td>
+                    <td class="grid-item" id="r3c2"></td>
+                    <td class="grid-item" id="r3c3"></td>
+                    <td class="grid-item" id="r3c4"></td>
+                    <td class="grid-item" id="r3c5"></td>
+                    <td class="grid-item" id="r3c6"></td>
+                    <td class="grid-item" id="r3c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r4c1"></td>
+                    <td class="grid-item" id="r4c2"></td>
+                    <td class="grid-item" id="r4c3"></td>
+                    <td class="grid-item" id="r4c4"></td>
+                    <td class="grid-item" id="r4c5"></td>
+                    <td class="grid-item" id="r4c6"></td>
+                    <td class="grid-item" id="r4c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r5c1"></td>
+                    <td class="grid-item" id="r5c2"></td>
+                    <td class="grid-item" id="r5c3"></td>
+                    <td class="grid-item" id="r5c4"></td>
+                    <td class="grid-item" id="r5c5"></td>
+                    <td class="grid-item" id="r5c6"></td>
+                    <td class="grid-item" id="r5c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r6c1"></td>
+                    <td class="grid-item" id="r6c2"></td>
+                    <td class="grid-item" id="r6c3"></td>
+                    <td class="grid-item" id="r6c4"></td>
+                    <td class="grid-item" id="r6c5"></td>
+                    <td class="grid-item" id="r6c6"></td>
+                    <td class="grid-item" id="r6c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r7c1"></td>
+                    <td class="grid-item" id="r7c2"></td>
+                    <td class="grid-item" id="r7c3"></td>
+                    <td class="grid-item" id="r7c4"></td>
+                    <td class="grid-item" id="r7c5"></td>
+                    <td class="grid-item" id="r7c6"></td>
+                    <td class="grid-item" id="r7c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r8c1"></td>
+                    <td class="grid-item" id="r8c2"></td>
+                    <td class="grid-item" id="r8c3"></td>
+                    <td class="grid-item" id="r8c4"></td>
+                    <td class="grid-item" id="r8c5"></td>
+                    <td class="grid-item" id="r8c6"></td>
+                    <td class="grid-item" id="r8c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r9c1"></td>
+                    <td class="grid-item" id="r9c2"></td>
+                    <td class="grid-item" id="r9c3"></td>
+                    <td class="grid-item" id="r9c4"></td>
+                    <td class="grid-item" id="r9c5"></td>
+                    <td class="grid-item" id="r9c6"></td>
+                    <td class="grid-item" id="r9c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r10c1"></td>
+                    <td class="grid-item" id="r10c2"></td>
+                    <td class="grid-item" id="r10c3"></td>
+                    <td class="grid-item" id="r10c4"></td>
+                    <td class="grid-item" id="r10c5"></td>
+                    <td class="grid-item" id="r10c6"></td>
+                    <td class="grid-item" id="r10c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r11c1"></td>
+                    <td class="grid-item" id="r11c2"></td>
+                    <td class="grid-item" id="r11c3"></td>
+                    <td class="grid-item" id="r11c4"></td>
+                    <td class="grid-item" id="r11c5"></td>
+                    <td class="grid-item" id="r11c6"></td>
+                    <td class="grid-item" id="r11c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r12c1"></td>
+                    <td class="grid-item" id="r12c2"></td>
+                    <td class="grid-item" id="r12c3"></td>
+                    <td class="grid-item" id="r12c4"></td>
+                    <td class="grid-item" id="r12c5"></td>
+                    <td class="grid-item" id="r12c6"></td>
+                    <td class="grid-item" id="r12c7"></td>
+                </tr>
+                <tr>
+                    <td class="grid-item" id="r13c1"></td>
+                    <td class="grid-item" id="r13c2"></td>
+                    <td class="grid-item" id="r13c3"></td>
+                    <td class="grid-item" id="r13c4"></td>
+                    <td class="grid-item" id="r13c5"></td>
+                    <td class="grid-item" id="r13c6"></td>
+                    <td class="grid-item" id="r13c7"></td>
+                </tr>
+
+
+            </table>
         </div>
+    </div>
+
+    <div class="row">
+        <h1 class="col-md-12">Mockups</h1>
+        <img src="mockup1.png" class="mockup"/>
+        <img src="mockup2.png" class="mockup"/>
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="script.js"></script>
 </body>
