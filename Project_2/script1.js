@@ -32,10 +32,6 @@ d3.json("data/boston_weather.json",draw);
 
 function draw(error,data){
 
-	// weather icon
-	var dailyIcon = data["daily"]["icon"];
-	document.getElementById("weather-icon").innerHTML = "<img src='icons/weather/" + dailyIcon + ".svg'/>";
-
 	// code
     $.ajax({
 		url: 'https://api.darksky.net/forecast/' + key + '/42.361145,-71.057083',
@@ -46,6 +42,10 @@ function draw(error,data){
 			if (data.readyState == '4' && data.status == '200') {
 				// console.log("This is TODAY's data.");
 				// console.log(data.responseJSON);
+
+				// weather icon
+				var dailyIcon = data.responseJSON["daily"]["icon"];
+				document.getElementById("weather-icon").innerHTML = "<img src='icons/weather/" + dailyIcon + ".svg'/>";
 
 				// today's data
 				var todayHumidity = data.responseJSON["daily"]["data"][0]["humidity"];
