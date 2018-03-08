@@ -1,4 +1,4 @@
-//plots
+// //plots
 var margin1 = {t: 5, r: 40, b: 20, l: 30}; //this is an object
 var width1 = d3.select('#mobile1').node().clientWidth - margin1.r - margin1.l,
     height1 = (d3.select('#mobile1').node().clientHeight / 4) - margin1.t - margin1.b;

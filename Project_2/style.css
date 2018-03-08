@@ -14,16 +14,6 @@ body {
 
 /* FIRST DASHBOARD */
 
-#location {
-    font-family: "Montserrat";
-    text-align: center;
-    font-size: 40pt;
-    text-transform: lowercase;
-    font-weight: bold;
-    letter-spacing: 1px;
-/*    margin-top: -20px;*/
-}
-
 #weather-icon {
     width: 200px;
     margin: auto;
@@ -31,11 +21,25 @@ body {
     margin-bottom: 0;
 }
 
+#location {
+    font-family: "Montserrat";
+    text-align: center;
+    font-size: 40pt;
+    text-transform: lowercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+#plot1 {
+    padding: 0;
+}
+
+
 #variable-container{
     width: 100%;
     height: 60px;
     text-align: center;
-    margin-top: 320px;
 }
 
 .variable {
