@@ -19,7 +19,7 @@ var weatherVar = "apparentTemperature";
 
 var colors = ["2e3192", "208bb9", "73bcdc", "b8dff0", "f5c37c", "f68d20", "f15a25", "c2272d"];
 var range = [];
-var loTemp = 28;
+var loTemp = 27.5;
 var tempRange = 2.5;
 for (i = 0; i < 7; i++) {
 	range[i] = loTemp + (i * tempRange);
@@ -48,15 +48,15 @@ function draw(error,data){
 		crossDomain: true,
 		complete: function (data) {
 			if (data.readyState == '4' && data.status == '200') {
-				console.log("This is TODAY's data.");
-				console.log(data.responseJSON);
+				// console.log("This is TODAY's data.");
+				// console.log(data.responseJSON);
 
 				var currentTime = data.responseJSON["currently"]["time"];
 				var weekTimes = [];
 				for (i = 0; i < colNum; i++) {		// fill out week's times
 					weekTimes[i] = currentTime + (i - day) * (60*60*24);
 				}
-				console.log(weekTimes);
+				// console.log(weekTimes);
 
 				for (i = 0; i < colNum; i++) {
 					$.ajax({
