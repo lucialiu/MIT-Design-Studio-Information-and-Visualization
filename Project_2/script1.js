@@ -25,6 +25,7 @@ var scaleWind = 10;
 var scaleTemp = 10;
 
 // var url = 'https://api.darksky.net/forecast/c6b293fcd2092b65cfb7313424b2f7ff/42.361145,-71.057083'
+var key = "1deb722b7d0cb190fa00f05f4525762c";
 
 // d3 weather data
 d3.json("data/boston_weather.json",draw);
@@ -35,13 +36,9 @@ function draw(error,data){
 	var dailyIcon = data["daily"]["icon"];
 	document.getElementById("weather-icon").innerHTML = "<img src='icons/weather/" + dailyIcon + ".svg'/>";
 
-	// console.log("CURRENT DATA")
-	// console.log(data);
-
-    var todayTime = data["currently"]["time"]; // today's time at 5AM
-
+	// code
     $.ajax({
-		url: 'https://api.darksky.net/forecast/c6b293fcd2092b65cfb7313424b2f7ff/42.361145,-71.057083,' + todayTime,
+		url: 'https://api.darksky.net/forecast/' + key + '/42.361145,-71.057083',
 		dataType: 'JSONP',
 		type: 'GET',
 		crossDomain: true,
@@ -58,10 +55,11 @@ function draw(error,data){
 				var todayTempLo = data.responseJSON["daily"]["data"][0]["apparentTemperatureLow"];
 				var todayTempAvg = (todayTempHi + todayTempLo) / 2;
 
-				var yesterTime = todayTime - (60*60*24); // yesterday's time at 5AM
+				var currentTime = data.responseJSON["currently"]["time"];
+				var yesterTime = currentTime - (60*60*24); // yesterday's time at 5AM
 
 				$.ajax({
-					url: 'https://api.darksky.net/forecast/c6b293fcd2092b65cfb7313424b2f7ff/42.361145,-71.057083,' + yesterTime,
+					url: 'https://api.darksky.net/forecast/' + key + '/42.361145,-71.057083,' + yesterTime,
 					dataType: 'JSONP',
 					type: 'GET',
 					crossDomain: true,
@@ -142,12 +140,12 @@ function draw(error,data){
 								.attr('fill', "none");
 
 						} else {
-							console.log("DATA FETCH FAILED")
+							console.log("DATA FETCH FAILED");
 						}
 					}
 				});
 			} else {
-				console.log("DATA FETCH FAILED")
+				console.log("DATA FETCH FAILED");
 			}
 		}
 	});
