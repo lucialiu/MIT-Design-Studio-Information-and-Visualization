@@ -14,7 +14,7 @@ var calendar = [0,0,0,0,0,0,1,1,1,1,0,0,0,
 
 var rowNum = 13;
 var	colNum = 7;
-var startHour = 11;
+var startHour = 0;
 var weatherVar = "apparentTemperature";
 
 var colors = ["2e3192", "208bb9", "73bcdc", "b8dff0", "f5c37c", "f68d20", "f15a25", "c2272d"];
@@ -26,20 +26,27 @@ for (i = 0; i < 7; i++) {
 }
 
 var allColors = [];
+var chronTracker = [];
+var chronColors = [];
+var finalColors = [];
 
 // var url = 'https://api.darksky.net/forecast/c6b293fcd2092b65cfb7313424b2f7ff/42.361145,-71.057083'
-var key = "1deb722b7d0cb190fa00f05f4525762c";
+var key = "1a424e1e8960644ebf18044433ac6506";
 
 // d3 weather data
 d3.json("data/boston_weather.json",draw);
 
+var date = new Date();
+var day = date.getDay();	// Sunday is 0, Monday is 1, etc
+var hour = date.getHours(); // 12am is 0 -> 11am is 11 -> 23
+
 function draw(error,data){
 
-	var date = new Date();
-	var day = date.getDay();	// Sunday is 0, Monday is 1, etc
+	
 
 	// console.log("CURRENT DATA")
 	// console.log(data);
+
 
 	$.ajax({
 		url: 'https://api.darksky.net/forecast/' + key + '/42.361145,-71.057083',
@@ -58,6 +65,7 @@ function draw(error,data){
 				}
 				// console.log(weekTimes);
 
+				// WEEK - COLORS
 				for (i = 0; i < colNum; i++) {
 					$.ajax({
 						url: 'https://api.darksky.net/forecast/' + key + '/42.361145,-71.057083,' + weekTimes[i],
@@ -67,6 +75,12 @@ function draw(error,data){
 						complete: function (data) {
 							if (data.readyState == '4' && data.status == '200') {
 								var hourlyWeather = [];
+								//var chronTracker = [];
+								//console.log(data.responseJSON["currently"]["time"]);
+								var t = data.responseJSON["currently"]["time"];
+								chronTracker.push(t, t, t, t, t, t, t, t, t, t, t, t, t); // push 13 times
+								//console.log(data.responseJSON);
+								//var timeArrayElement = [data.responseJSON["currently"]["time"], "blank"];
 								for (j = 0; j < rowNum; j++) {
 									hourlyWeather[j]= data.responseJSON["hourly"]["data"][j + startHour][weatherVar];
 								}
@@ -92,12 +106,39 @@ function draw(error,data){
 									}
 									allColors.push(color);
 								}
-								
+								// console.log(chronTracker);
+								// console.log(allColors);
+								// console.log(chronTracker.length);
+								for (k = 0; k < rowNum; k++) {
+									fromLast = chronTracker.length - 13 + k;
+									chronColors.push({'time': chronTracker[fromLast], 'color': allColors[fromLast]})
+								};
+								chronColors.sort(function(a,b) {
+									return ((a.time < b.time) ? -1 : ((a.time == b.time) ? 0 : 1));
+								});
+								for (l = 0; l < chronColors.length; l++) {
+									finalColors[l] = chronColors[l].color;
+								}
+
 								for (k = 0; k < allColors.length; k++) {
 									if (calendar[k] == 0) {
-										document.getElementById(k).innerHTML = "<img src='icons/colors/" + allColors[k] + ".svg'/>";
+										document.getElementById(k).innerHTML = "<img src='icons/colors/" + finalColors[k] + ".svg'/>";
 									}
 								}
+
+								// TODAY - DOT
+								if (hour >= startHour && hour <= (startHour+rowNum-1)) {
+									var idNum = (day*rowNum) + (hour-startHour);
+									// console.log(idNum);
+									// console.log(calendar[idNum]);
+									console.log(finalColors[idNum]);
+									if (calendar[idNum] == 0) {			// colored
+										document.getElementById(idNum).innerHTML = "<img src='icons/colors/" + finalColors[idNum] + "-dot.svg'/>";
+									} else if (calendar[idNum] == 1) {	// blank
+										document.getElementById(idNum).innerHTML = "<img src='icons/colors/grey-circle.svg'/>";
+									}
+								}
+
 							}
 						}
 					})

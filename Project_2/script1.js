@@ -25,7 +25,7 @@ var scaleWind = 10;
 var scaleTemp = 10;
 
 // var url = 'https://api.darksky.net/forecast/c6b293fcd2092b65cfb7313424b2f7ff/42.361145,-71.057083'
-var key = "1deb722b7d0cb190fa00f05f4525762c";
+var key = "1a424e1e8960644ebf18044433ac6506";
 
 // d3 weather data
 d3.json("data/boston_weather.json",draw);
