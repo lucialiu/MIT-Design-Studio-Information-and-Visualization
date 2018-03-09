@@ -2,6 +2,22 @@ body {
     padding: 50px;
 }
 
+h1 {
+    margin-bottom: 40px;
+    font-family: "Montserrat";
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: 40px;
+    font-size: 24px;
+    text-align: justify;
+}
+
+.name {
+    margin-bottom: 80px;
+}
+
 #mobile1,#mobile2 {
     width: 414px;
     height: 736px;

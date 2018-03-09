@@ -14,13 +14,13 @@ var calendar = [0,0,0,0,0,0,1,1,1,1,0,0,0,
 
 var rowNum = 13;
 var	colNum = 7;
-var startHour = 0;
+var startHour = 11;		// start at 11am for me!
 var weatherVar = "apparentTemperature";
 
 var colors = ["2e3192", "208bb9", "73bcdc", "b8dff0", "f5c37c", "f68d20", "f15a25", "c2272d"];
 var range = [];
 var loTemp = 27.5;
-var tempRange = 2.5;
+var tempRange = 2.5;	// not a good range practically, but makes winter in boston look pretty
 for (i = 0; i < 7; i++) {
 	range[i] = loTemp + (i * tempRange);
 }
@@ -31,7 +31,7 @@ var chronColors = [];
 var finalColors = [];
 
 // var url = 'https://api.darksky.net/forecast/c6b293fcd2092b65cfb7313424b2f7ff/42.361145,-71.057083'
-var key = "1a424e1e8960644ebf18044433ac6506";
+var key = "6275e682a37fdfe567d0604a9d828f0e";
 
 // d3 weather data
 d3.json("data/boston_weather.json",draw);
@@ -72,7 +72,7 @@ function draw(error,data){
 							if (data.readyState == '4' && data.status == '200') {
 								var hourlyWeather = [];
 								var t = data.responseJSON["currently"]["time"];
-								chronTracker.push(t, t, t, t, t, t, t, t, t, t, t, t, t); // push 13 times
+								chronTracker.push(t, t, t, t, t, t, t, t, t, t, t, t, t);
 								for (j = 0; j < rowNum; j++) {
 									hourlyWeather[j]= data.responseJSON["hourly"]["data"][j + startHour][weatherVar];
 								}
