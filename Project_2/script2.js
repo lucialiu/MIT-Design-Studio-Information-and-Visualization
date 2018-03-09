@@ -9,7 +9,7 @@ var calendar = [0,0,0,0,0,0,1,1,1,1,0,0,0,
 	0,0,0,0,1,0,0,0,1,0,0,1,0,
 	0,0,1,0,0,0,0,1,0,1,0,0,0,
 	0,0,0,0,1,0,0,0,0,0,1,1,0,
-	0,0,1,1,1,1,0,0,0,0,1,0,0,
+	0,1,1,1,1,1,0,0,0,0,1,0,0,
 	1,0,1,0,0,1,1,0,1,0,0,0,0];
 
 var rowNum = 13;
@@ -42,11 +42,8 @@ var hour = date.getHours(); // 12am is 0 -> 11am is 11 -> 23
 
 function draw(error,data){
 
-	
-
 	// console.log("CURRENT DATA")
 	// console.log(data);
-
 
 	$.ajax({
 		url: 'https://api.darksky.net/forecast/' + key + '/42.361145,-71.057083',
@@ -63,7 +60,6 @@ function draw(error,data){
 				for (i = 0; i < colNum; i++) {		// fill out week's times
 					weekTimes[i] = currentTime + (i - day) * (60*60*24);
 				}
-				// console.log(weekTimes);
 
 				// WEEK - COLORS
 				for (i = 0; i < colNum; i++) {
@@ -75,16 +71,11 @@ function draw(error,data){
 						complete: function (data) {
 							if (data.readyState == '4' && data.status == '200') {
 								var hourlyWeather = [];
-								//var chronTracker = [];
-								//console.log(data.responseJSON["currently"]["time"]);
 								var t = data.responseJSON["currently"]["time"];
 								chronTracker.push(t, t, t, t, t, t, t, t, t, t, t, t, t); // push 13 times
-								//console.log(data.responseJSON);
-								//var timeArrayElement = [data.responseJSON["currently"]["time"], "blank"];
 								for (j = 0; j < rowNum; j++) {
 									hourlyWeather[j]= data.responseJSON["hourly"]["data"][j + startHour][weatherVar];
 								}
-
 								for (j = 0; j < rowNum; j++) {
 									var color;
 									if (hourlyWeather[j] < range[0]) {
@@ -106,9 +97,6 @@ function draw(error,data){
 									}
 									allColors.push(color);
 								}
-								// console.log(chronTracker);
-								// console.log(allColors);
-								// console.log(chronTracker.length);
 								for (k = 0; k < rowNum; k++) {
 									fromLast = chronTracker.length - 13 + k;
 									chronColors.push({'time': chronTracker[fromLast], 'color': allColors[fromLast]})
@@ -119,7 +107,6 @@ function draw(error,data){
 								for (l = 0; l < chronColors.length; l++) {
 									finalColors[l] = chronColors[l].color;
 								}
-
 								for (k = 0; k < allColors.length; k++) {
 									if (calendar[k] == 0) {
 										document.getElementById(k).innerHTML = "<img src='icons/colors/" + finalColors[k] + ".svg'/>";
@@ -129,16 +116,12 @@ function draw(error,data){
 								// TODAY - DOT
 								if (hour >= startHour && hour <= (startHour+rowNum-1)) {
 									var idNum = (day*rowNum) + (hour-startHour);
-									// console.log(idNum);
-									// console.log(calendar[idNum]);
-									console.log(finalColors[idNum]);
-									if (calendar[idNum] == 0) {			// colored
+									if (finalColors[idNum] != null && calendar[idNum] == 0) {	// colored
 										document.getElementById(idNum).innerHTML = "<img src='icons/colors/" + finalColors[idNum] + "-dot.svg'/>";
-									} else if (calendar[idNum] == 1) {	// blank
+									} else if (finalColors[idNum] != null && calendar[idNum] == 1) {	// blank
 										document.getElementById(idNum).innerHTML = "<img src='icons/colors/grey-circle.svg'/>";
 									}
 								}
-
 							}
 						}
 					})
