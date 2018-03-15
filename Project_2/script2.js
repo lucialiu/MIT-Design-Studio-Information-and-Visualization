@@ -19,8 +19,8 @@ var weatherVar = "apparentTemperature";
 
 var colors = ["2e3192", "208bb9", "73bcdc", "b8dff0", "f5c37c", "f68d20", "f15a25", "c2272d"];
 var range = [];
-var loTemp = 0;
-var tempRange = 10;	// not a good range practically, but makes winter in boston look pretty
+var loTemp = 20;
+var tempRange = 5;	// not a good range practically, but makes winter in boston look pretty
 for (i = 0; i < 7; i++) {
 	range[i] = loTemp + (i * tempRange);
 }

@@ -1,7 +1,7 @@
 // PLOT 1
 
 var width1 = d3.select('#mobile1').node().clientWidth; // graph spans entire width
-var height1 = 320;	// graph has fixed height
+var height1 = 310;	// graph has fixed height
 
 var plot1 = d3.select('#plot1') // if we select a html id #name, if we select a class .name
 	.append('svg')
