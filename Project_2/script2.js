@@ -14,7 +14,7 @@ var calendar = [0,0,0,0,0,0,1,1,1,1,0,0,0,
 
 var rowNum = 13;
 var	colNum = 7;
-var startHour = 11;		// start at 11am for me!
+var startHour = 10;		// start at 11am for me!
 var weatherVar = "apparentTemperature";
 
 var colors = ["2e3192", "208bb9", "73bcdc", "b8dff0", "f5c37c", "f68d20", "f15a25", "c2272d"];
